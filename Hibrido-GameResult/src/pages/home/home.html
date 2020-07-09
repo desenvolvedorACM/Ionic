@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Placar classificação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of listaPlacarClassificacao" (click)="detalheGame()">
+    <ion-item>
+      <ion-avatar item-start>
+        <img *ngIf="item.Balance > 0 && item.Balance <= 100" src="assets/imgs/taca_bronze.png">
+        <img *ngIf="item.Balance > 100 && item.Balance <= 300" src="assets/imgs/taca_prata.png">
+        <img *ngIf="item.Balance > 250" src="assets/imgs/taca_ouro.png">
+      </ion-avatar>
+      <h2>
+        <b>Jogador: </b>{{ item.NomeJogador }}</h2>
+       <p><b>Total pontos: </b>{{ item.Balance }}</p>
+       <p><b>UpdateDate: </b>{{ item.LastUpdateDate | date: 'dd/MM/yyyy' }}</p>
+       <!--<p>Date : {{ item.LastUpdateDate | dateFormatPipe }}</p>-->
+    </ion-item>
+  </ion-card>
+</ion-content>
